@@ -18,6 +18,35 @@ export function AuthHero() {
   );
 }
 
+export function AuthFooter() {
+  return (
+    <footer className="auth-footer">
+      <div className="auth-footer-inner">
+        <div className="auth-footer-brand">
+          <span className="brand-mark">F</span> FarmLink
+          <p>Quality-checked produce, from local farms to bulk buyers.</p>
+        </div>
+
+        <ul className="auth-footer-contact">
+          <li>
+            <span>Email</span>
+            <a href="mailto:mampholomojalefa04@gmail.com">mampholomojalefa04@gmail.com</a>
+          </li>
+          <li>
+            <span>Phone</span>
+            <a href="tel:+27664670894">+27 66 467 0894</a>
+          </li>
+          <li>
+            <span>WhatsApp</span>
+           <a href="tel:+27664670894">+27 66 467 0894</a>
+          </li>
+        </ul>
+      </div>
+      <p className="auth-footer-copy">&copy; {new Date().getFullYear()} FarmLink. All rights reserved.</p>
+    </footer>
+  );
+}
+
 export default function Login() {
   const { user, login } = useAuth();
   const navigate = useNavigate();
@@ -43,26 +72,29 @@ export default function Login() {
   };
 
   return (
-    <div className="auth-wrap">
-      <AuthHero />
-      <div className="auth-panel">
-        <form className="card auth-card" onSubmit={submit}>
-          <h2>Welcome back</h2>
-          <p className="sub">Log in to your FarmLink account.</p>
-          {error && <Alert type="error">{error}</Alert>}
-          <Field label="Email">
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="username" required />
-          </Field>
-          <Field label="Password">
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" required />
-          </Field>
-          <button className="btn full" disabled={busy}>{busy ? 'Logging in...' : 'Log in'}</button>
-          <div className="auth-links">
-            <span>New supplier? <Link to="/register/farmer">Register as a farmer</Link></span>
-            <span>Buying in bulk? <Link to="/register/customer">Register your business</Link></span>
-          </div>
-        </form>
+    <>
+      <div className="auth-wrap">
+        <AuthHero />
+        <div className="auth-panel">
+          <form className="card auth-card" onSubmit={submit}>
+            <h2>Welcome back</h2>
+            <p className="sub">Log in to your FarmLink account.</p>
+            {error && <Alert type="error">{error}</Alert>}
+            <Field label="Email">
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="username" required />
+            </Field>
+            <Field label="Password">
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" required />
+            </Field>
+            <button className="btn full" disabled={busy}>{busy ? 'Logging in...' : 'Log in'}</button>
+            <div className="auth-links">
+              <span>New supplier? <Link to="/register/farmer">Register as a farmer</Link></span>
+              <span>Buying in bulk? <Link to="/register/customer">Register your business</Link></span>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+      <AuthFooter />
+    </>
   );
 }
