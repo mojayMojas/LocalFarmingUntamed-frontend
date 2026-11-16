@@ -1,7 +1,14 @@
 import { useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, NavLink, Navigate, useNavigate } from 'react-router-dom';
 import { HOME_BY_ROLE, useAuth } from '../../auth';
 import { Alert, Field } from '../../components/ui';
+import './authTheme.css';
+
+const FLOW_STEPS = [
+  'Farmers list what they can supply',
+  'We buy, inspect, process and pack it',
+  'Businesses order in bulk and pay securely with Ozow',
+];
 
 export function AuthHero() {
   return (
@@ -10,11 +17,31 @@ export function AuthHero() {
       <h1>From local farms to bulk buyers, quality-checked in between.</h1>
       <p>FarmLink sources produce from verified farmers, inspects and processes it, then supplies restaurants, retailers, schools and hotels in bulk.</p>
       <div className="flow">
-        <div>1. Farmers list what they can supply</div>
-        <div>2. We buy, inspect, process and pack it</div>
-        <div>3. Businesses order in bulk and pay securely with Ozow</div>
+        {FLOW_STEPS.map((text, i) => (
+          <div className="flow-item" key={text}>
+            <span className="flow-num">{i + 1}</span>
+            <span>{text}</span>
+          </div>
+        ))}
       </div>
     </div>
+  );
+}
+
+export function AuthHeader() {
+  return (
+    <header className="auth-header">
+      <div className="auth-header-inner">
+        <Link to="/" className="brand" aria-label="FarmLink home">
+          <span className="brand-mark">F</span> FarmLink
+        </Link>
+        <nav className="auth-header-nav" aria-label="Account">
+          <NavLink to="/login">Log in</NavLink>
+          <NavLink to="/register/farmer">Farmer sign-up</NavLink>
+          <NavLink to="/register/customer">Business sign-up</NavLink>
+        </nav>
+      </div>
+    </header>
   );
 }
 
@@ -27,7 +54,19 @@ export function AuthFooter() {
           <p>Quality-checked produce, from local farms to bulk buyers.</p>
         </div>
 
-        <ul className="auth-footer-contact">
+        <nav className="auth-footer-col" aria-label="Quick links">
+          <h3 className="auth-footer-title">Quick links</h3>
+          <ul className="auth-footer-links">
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/login">Log in</Link></li>
+            <li><Link to="/register/farmer">Register as a farmer</Link></li>
+            <li><Link to="/register/customer">Register your business</Link></li>
+          </ul>
+        </nav>
+
+        <div className="auth-footer-col">
+          <h3 className="auth-footer-title">Contact us</h3>
+          <ul className="auth-footer-contact">
           <li>
             <span>Email</span>
             <a href="mailto:mampholomojalefa04@gmail.com">mampholomojalefa04@gmail.com</a>
@@ -40,7 +79,8 @@ export function AuthFooter() {
             <span>WhatsApp</span>
            <a href="tel:+27664670894">+27 66 467 0894</a>
           </li>
-        </ul>
+          </ul>
+        </div>
       </div>
       <p className="auth-footer-copy">&copy; {new Date().getFullYear()} FarmLink. All rights reserved.</p>
     </footer>
@@ -73,6 +113,7 @@ export default function Login() {
 
   return (
     <>
+      <AuthHeader />
       <div className="auth-wrap">
         <AuthHero />
         <div className="auth-panel">
