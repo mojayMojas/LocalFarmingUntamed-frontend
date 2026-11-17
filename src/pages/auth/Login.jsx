@@ -50,7 +50,7 @@ export function AuthFooter() {
     <footer className="auth-footer">
       <div className="auth-footer-inner">
         <div className="auth-footer-brand">
-          <span className="brand-mark">F</span> FarmLink
+          <span className="brand-mark">F</span> MOJELA
           <p>Quality-checked produce, from local farms to bulk buyers.</p>
         </div>
 
