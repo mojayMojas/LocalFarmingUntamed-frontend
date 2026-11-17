@@ -13,9 +13,9 @@ const FLOW_STEPS = [
 export function AuthHero() {
   return (
     <div className="auth-hero">
-      <div className="brand"><span className="brand-mark">F</span> FarmLink</div>
+      <div className="brand"><span className="brand-mark">M</span> MOJELA</div>
       <h1>From local farms to bulk buyers, quality-checked in between.</h1>
-      <p>FarmLink sources produce from verified farmers, inspects and processes it, then supplies restaurants, retailers, schools and hotels in bulk.</p>
+      <p>FarmLink sources produce from verified farmers, inspects and processes it, then supplies restaurants, retailers, Food Security in check.</p>
       <div className="flow">
         {FLOW_STEPS.map((text, i) => (
           <div className="flow-item" key={text}>
@@ -33,7 +33,7 @@ export function AuthHeader() {
     <header className="auth-header">
       <div className="auth-header-inner">
         <Link to="/" className="brand" aria-label="FarmLink home">
-          <span className="brand-mark">F</span> FarmLink
+          <span className="brand-mark">F</span> MOJELA
         </Link>
         <nav className="auth-header-nav" aria-label="Account">
           <NavLink to="/login">Log in</NavLink>
